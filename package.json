@@ -1,0 +1,21 @@
+{
+  "name": "icantfixyou-server",
+  "version": "0.0.0",
+  "description": "I Cant Fix You Server",
+  "main": "index.js",
+  "dependencies": {
+    "firebase": "^3.6.9",
+    "js-yaml": "^3.8.1",
+    "node-config": "0.0.2"
+  },
+  "devDependencies": {
+    "tslint": "^4.4.2",
+    "tslint-eslint-rules": "^3.2.3",
+    "typescript": "^2.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Max Sorensen",
+  "license": "ISC"
+}
