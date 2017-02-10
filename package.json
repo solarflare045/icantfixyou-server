@@ -4,11 +4,12 @@
   "description": "I Cant Fix You Server",
   "main": "index.js",
   "dependencies": {
+    "config": "^1.25.1",
     "firebase": "^3.6.9",
-    "js-yaml": "^3.8.1",
-    "node-config": "0.0.2"
+    "js-yaml": "^3.8.1"
   },
   "devDependencies": {
+    "@types/config": "0.0.32",
     "tslint": "^4.4.2",
     "tslint-eslint-rules": "^3.2.3",
     "typescript": "^2.0.0"
