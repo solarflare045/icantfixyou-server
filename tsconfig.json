@@ -10,8 +10,9 @@
     ],
     "module": "es2015",
     "moduleResolution": "node",
+    "outDir": "build",
     "sourceMap": true,
-    "target": "es5"
+    "target": "es2015"
   },
   "include": [
     "src/**/*.ts"
@@ -19,7 +20,7 @@
   "exclude": [
     "node_modules"
   ],
-  "compileOnSave": true,
+  "compileOnSave": false,
   "atom": {
     "rewriteTsconfig": false
   }
