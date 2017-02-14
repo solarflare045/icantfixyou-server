@@ -4,8 +4,6 @@ export class MechanicalDamage extends Fault {
   protected getNames(): string[] {
     return [
       'Mechanical Damage',
-      'Technical Fault',
-      'Sparking',
     ];
   }
 }
