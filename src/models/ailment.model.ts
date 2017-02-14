@@ -8,6 +8,7 @@ export class Ailment {
   protected _objectId: SharedValue<string>;
   protected _object$: Observable<GameObject>;
   protected _subtype: SharedValue<string>;
+  protected _variety: SharedValue<number>;
 
   constructor(protected _node: SharedNode) {
     this._hp = this._node.child('hp').asValue<number>();
@@ -15,15 +16,18 @@ export class Ailment {
     this._objectId = this._node.child('object').asValue<string>();
     this._object$ = OBJECT_HELPER.ref$(_node, this._objectId.value$);
     this._subtype = this._node.child('subtype').asValue<string>();
+    this._variety = this._node.child('variety').asValue<number>();
   }
 
   get hp$(): Observable<number> { return this._hp.value$; }
   get name$(): Observable<string> { return this._name.value$; }
   get object$(): Observable<GameObject> { return this._object$; }
   get subtype$(): Observable<string> { return this._subtype.value$; }
+  get variety$(): Observable<number> { return this._variety.value$; }
 
   setHp(hp: number) { return this._hp.update(hp); }
   setName(name: string) { return this._name.update(name); }
+  setVariety(variety: number) { return this._variety.update(variety); }
 }
 
 export const AILMENT_HELPER = SharedSingleBuilder.single('ailments', Ailment);

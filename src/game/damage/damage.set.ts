@@ -8,7 +8,7 @@ import _ from 'lodash';
 import { ObjectSet, Constructor } from '../set';
 
 import { DestroyedDamage } from './damages/destroyed';
-import { MechanicalDamage } from './damages/mechanical';
+import { MechanicalDamage } from './damages/faults/mechanical';
 
 export class DamageSet extends ObjectSet<Ailment, Damage, LocationRunner> {
   protected get Constructors() { return DAMAGE_CONSTRUCTORS; }
