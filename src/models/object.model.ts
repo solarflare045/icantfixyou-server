@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { SharedNode, SharedValue, SharedBuilder, SharedSingleBuilder } from '../db/shared';
+import { SharedNode, SharedValue, SharedList, SharedBuilder, SharedSingleBuilder } from '../db/shared';
 import { Game, GAME_HELPER } from './game.model';
 import { Ailment, AILMENT_HELPER } from './ailment.model';
 import { Item, ITEM_HELPER } from './item.model';
@@ -11,6 +11,7 @@ export abstract class GameObject {
   protected _gameId: SharedValue<string>;
   protected _game$: Observable<Game>;
   protected _health: SharedValue<string>;
+  protected _ailments: SharedList;
   protected _ailments$: Observable<Ailment[]>;
   protected _items$: Observable<Item[]>;
   protected _targeters$: Observable<User[]>;
@@ -20,6 +21,7 @@ export abstract class GameObject {
     this._gameId = this._node.child('game').asValue<string>();
     this._health = this._node.child('health').asValue<string>();
     this._game$ = GAME_HELPER.ref$(this._node, this._gameId.value$);
+    this._ailments = AILMENT_HELPER.list(_node, _node.key$, 'object');
     this._ailments$ = AILMENT_HELPER.items$(_node, _node.key$, 'object');
     this._items$ = ITEM_HELPER.items$(_node, _node.key$, 'object');
     this._targeters$ = USER_HELPER.items$(_node, _node.key$, 'target');
@@ -29,6 +31,7 @@ export abstract class GameObject {
   get name$(): Observable<string> { return this._name.value$; }
   get game$(): Observable<Game> { return this._game$; }
   get health$(): Observable<string> { return this._health.value$; }
+  get ailments(): SharedList { return this._ailments; }
   get ailments$(): Observable<Ailment[]> { return this._ailments$; }
   get items$(): Observable<Item[]> { return this._items$; }
   get targeters$(): Observable<User[]> { return this._targeters$; }
@@ -44,13 +47,21 @@ export class UnknownObject extends GameObject {
 
 export class Location extends GameObject {
   protected _icon$: Observable<string>;
+  protected _ownerId: SharedValue<string>;
+  protected _owner$: Observable<User>;
+  protected _subtype: SharedValue<string>;
 
   constructor(_node: SharedNode) {
     super(_node);
     this._icon$ = this.name$.map((name) => `/assets/locations/${ name.toLowerCase() }.svg`);
+    this._subtype = this._node.child('subtype').asValue<string>();
+    this._ownerId = this._node.child('owner').asValue<string>();
+    this._owner$ = USER_HELPER.ref$(_node, _node.key$);
   }
   
   get icon$(): Observable<string> { return this._icon$; }
+  get owner$(): Observable<User> { return this._owner$; }
+  get subtype$(): Observable<string> { return this._subtype.value$; }
 }
 
 export class User extends GameObject {

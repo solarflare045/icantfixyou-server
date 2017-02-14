@@ -2,18 +2,28 @@ import { Observable } from 'rxjs';
 import _ from 'lodash';
 
 import { Game, GAME_HELPER } from './models/game.model';
-import { Location } from './models/object.model';
+// import { Location } from './models/object.model';
+
+// import { PoweredLocationRunner } from './game/location/classes/powered';
+
+import { GameRunner } from './game/game';
 
 import { root } from './db/helpers';
 
 let game: Game = GAME_HELPER.ref(root, 'abcabc');
-let locations$: Observable<Location[]> = game.locations$;
+let gameRunner: GameRunner = new GameRunner(game);
 
-let healths = [ 'stable', 'damaged', 'critical', 'destroyed' ];
-let health$ = Observable.interval(1000).map((i) => healths[i % healths.length]).do((health) => console.log('HEALTH = ', health));
+// gameRunner.locations.fetch$('engine')
+//   .switchMap((location) => location.health$)
+//   .subscribe((health) => console.log(health));
 
-Observable.combineLatest(locations$, health$)
-  .do(([ locations, health ]) => {
-    _.each(locations, (location) => location.setHealth(health));
-  })
-  .subscribe();
+gameRunner.run$.subscribe();
+
+// gameRunner.locations.items$
+//   .switchMap((locations) => Observable.combineLatest( _.map(locations, (location) => location.health$) ))
+//   .subscribe((healths) => console.log(healths));
+
+// gameRunner.locations.fetch$('radar')
+//   .switchMap((location: PoweredLocationRunner) => location.engine$)
+//   .switchMap((location) => location.model.name$)
+//   .subscribe((o) => console.log(o));

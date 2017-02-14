@@ -1,6 +1,2 @@
 firebaseConfig:
-  apiKey: AIzaSyBO2M1YoMd4GEqn68qq6lmQ2hC7UwdSyqI
-  authDomain: icantfixyou-e82f6.firebaseapp.com
   databaseURL: https://icantfixyou-e82f6.firebaseio.com
-  storageBucket: icantfixyou-e82f6.appspot.com
-  messagingSenderId: 266599518181

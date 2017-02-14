@@ -1,6 +1,7 @@
 import { FirebaseObjectObservable, FirebaseListObservable, FirebaseFactory, Query } from './db';
 import { Observable } from 'rxjs';
 import _ from 'lodash';
+import firebase from 'firebase-admin';
 
 export class SharedNode {
   protected _node: FirebaseObjectObservable<any>;

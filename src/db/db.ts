@@ -1,9 +1,14 @@
 import { Observable } from 'rxjs';
-import firebase from 'firebase';
+// import firebase from 'firebase';
+import firebase from 'firebase-admin';
 import config from 'config';
 import _ from 'lodash';
 
-export const app = firebase.initializeApp( config.get('firebaseConfig') );
+const app = firebase.initializeApp(
+  _.extend( config.get('firebaseConfig'), {
+    credential: firebase.credential.cert( config.get('firebaseCredential' )),
+  }),
+);
 
 export const auth = app.auth;
 export const database = app.database;
