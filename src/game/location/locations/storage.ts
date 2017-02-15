@@ -1,5 +1,5 @@
-import { LocationRunner } from '../location';
+import { ImmuneLocationRunner } from '../classes/immune';
 
-export class Storage extends LocationRunner {
+export class Storage extends ImmuneLocationRunner {
   
 }

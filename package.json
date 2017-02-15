@@ -8,11 +8,13 @@
     "firebase": "^3.6.9",
     "firebase-admin": "^4.1.0",
     "js-yaml": "^3.8.1",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "winston": "^2.3.1"
   },
   "devDependencies": {
     "@types/config": "0.0.32",
     "@types/lodash": "^4.14.52",
+    "@types/winston": "^2.2.0",
     "babel-preset-es2015": "^6.22.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",

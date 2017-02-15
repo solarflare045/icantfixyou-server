@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { Damage } from '../damage';
+import { Damage } from '../../damage';
 import _ from 'lodash';
 
 export abstract class Fault extends Damage {

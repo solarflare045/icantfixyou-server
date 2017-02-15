@@ -1,4 +1,4 @@
-import { Fault } from '../fault.class';
+import { Fault } from '../classes/fault';
 
 export class MechanicalDamage extends Fault {
   protected getNames(): string[] {

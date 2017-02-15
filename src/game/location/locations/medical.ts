@@ -1,5 +1,5 @@
-import { LocationRunner } from '../location';
+import { ImmuneLocationRunner } from '../classes/immune';
 
-export class MedicalBay extends LocationRunner {
+export class MedicalBay extends ImmuneLocationRunner {
   
 }

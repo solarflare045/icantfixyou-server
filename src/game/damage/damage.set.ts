@@ -26,6 +26,15 @@ export class DamageSet extends ObjectSet<Ailment, Damage, LocationRunner> {
       .switchMap((items) => Observable.combineLatest(_.map(items, (item) => item.run$)))
       .share();
   }
+
+  push(damage: IDamage): void {
+    this.list.push(damage);
+  }
+}
+
+export interface IDamage {
+  subtype: 'mechanical';
+  object: string;
 }
 
 const DAMAGE_CONSTRUCTORS: [{ subtype: string, constructor: Constructor<Ailment, Damage, LocationRunner> }] = [

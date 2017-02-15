@@ -1,2 +1,7 @@
 firebaseConfig:
   databaseURL: https://icantfixyou-e82f6.firebaseio.com
+
+logging:
+  console:
+    level: info
+    colorize: true    

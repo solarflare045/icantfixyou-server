@@ -1,5 +1,4 @@
 import { Observable } from 'rxjs';
-// import firebase from 'firebase';
 import firebase from 'firebase-admin';
 import config from 'config';
 import _ from 'lodash';
